@@ -1,0 +1,5 @@
+{
+  "name": "myPortfolio",
+  "description": "A responsive, dark-themed portfolio website for a web developer using React, TypeScript, and Tailwind CSS, featuring smooth animations and a glass-morphism UI.",
+  "requestFramePermissions": []
+}

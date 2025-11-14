@@ -1,0 +1,534 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@keyframes move-background {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #cbd5e1; /* Moved from index.html (text-slate-300) */
+  background-color: #0a0a1a; /* Fallback */
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0),
+    linear-gradient(135deg, #0f172a, #0a0a1a, #1e293b, #0f172a);
+  background-size: 30px 30px, 400% 400%;
+  animation: move-background 20s ease infinite;
+}
+
+/* Add offset for fixed navbar */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+
+/* Custom Scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0077ff;
+  border-radius: 5px;
+  border: 2px solid #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f2ff;
+}
+
+/* Scroll-triggered animation setup */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pro Navbar Animation */
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.nav-link-pro {
+  position: relative;
+  display: inline-block;
+  padding: 0.8rem 0;
+  color: #a0a0a0;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Hover Text Effect */
+.nav-link-pro:hover {
+  color: #00f2ff;
+  transform: translateY(-3px);
+  text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+}
+
+/* Active State */
+.nav-link-pro.active {
+  color: #00f2ff;
+}
+
+/* Animated Underline */
+.nav-link-pro::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00f2ff, #0066ff, #00f2ff);
+  background-size: 200% 100%;
+  transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.8),
+              0 0 40px rgba(0, 102, 255, 0.4);
+  border-radius: 2px;
+  animation: gradient-flow 3s ease infinite;
+}
+
+.nav-link-pro.active::before,
+.nav-link-pro:hover::before {
+  width: 100%;
+}
+
+
+/* Glow Dot Effect */
+.nav-link-pro::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%) scale(0);
+  width: 6px;
+  height: 6px;
+  background: #00f2ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00f2ff;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.nav-link-pro:hover::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Animated Text for Hero Section */
+@keyframes letterSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  65% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+.animated-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: letterSlide 3s ease-in-out infinite;
+  will-change: transform, opacity;
+  text-decoration: none;
+}
+
+/* Skill Card Pro Hover Effect */
+.skill-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: var(--skill-color);
+  box-shadow: 0 0 20px -5px var(--skill-color);
+}
+
+.skill-card > i {
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover > i {
+  transform: scale(1.1);
+}
+
+.skill-card > h3 {
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover > h3 {
+  color: var(--skill-color);
+}
+
+/* Visually-hidden class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Contact Section Pro Styles */
+.contact-input-group {
+    position: relative;
+}
+.contact-input-group i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8; /* slate-400 */
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+.contact-input-group .form-input {
+    padding-left: 3rem;
+}
+.contact-input-group .form-input:focus + i {
+    color: #06b6d4; /* cyan-500 */
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+.form-error-animate {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.form-message-animate {
+  animation: fade-in-up 0.5s ease forwards;
+}
+
+/* ==========================================================================
+   Navbar Focus State Customization
+   ========================================================================== */
+
+/* Globally remove the default outline for all clickable navbar elements */
+header a,
+header button {
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* Removes tap highlight on mobile */
+}
+
+/* ADD custom, accessible focus indicators using :focus-visible */
+
+/* For the main desktop navigation links */
+.nav-link-pro:focus-visible {
+    color: #00f2ff;
+    text-shadow: 0 0 8px #06b6d4;
+}
+
+/* For elements that look like buttons (Desktop Resume, Hamburger, Mobile Resume) */
+header a[download]:focus-visible,
+header button[aria-label="Toggle navigation menu"]:focus-visible {
+    /* Create a custom "glow" effect instead of a hard ring */
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.5);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+/* For text-based links that aren't 'nav-link-pro' (Logo, Mobile Nav Links) */
+header > div > a:first-child:focus-visible { /* Logo */
+    filter: brightness(1.2);
+    transition: filter 0.3s ease;
+}
+
+#mobile-menu a:not([download]):focus-visible { /* Mobile Links (excluding resume) */
+    color: #67e8f9; /* cyan-300, same as hover */
+}
+
+/* ==========================================================================
+   Pro Timeline (Education & Internships)
+   ========================================================================== */
+@keyframes node-pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 0 20px 10px rgba(6, 182, 212, 0);
+  }
+}
+
+@keyframes card-glow {
+  from {
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 15px -5px rgba(6, 182, 212, 0.4), 0 10px 30px rgba(0,0,0,0.3);
+  }
+  to {
+    border-color: rgba(103, 232, 249, 0.7);
+    box-shadow: 0 0 25px 0px rgba(103, 232, 249, 0.5), 0 10px 30px rgba(0,0,0,0.3);
+  }
+}
+
+.pro-timeline-container {
+  position: relative;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* The central timeline track */
+.pro-timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
+  border-radius: 2px;
+}
+
+.pro-timeline-item {
+  padding: 20px 0;
+  position: relative;
+  width: 50%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: calc(0.2s * var(--stagger-index));
+}
+.pro-timeline-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pro-timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: 50px;
+}
+.pro-timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: 50px;
+}
+
+/* The node on the timeline */
+.pro-timeline-node {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #0f172a; /* slate-900 */
+  border: 3px solid #334155; /* slate-700 */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #94a3b8; /* slate-400 */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.pro-timeline-item:nth-child(odd) .pro-timeline-node {
+  right: -25px;
+}
+.pro-timeline-item:nth-child(even) .pro-timeline-node {
+  left: -25px;
+}
+
+/* Node animation when in view */
+.pro-timeline-item.in-view .pro-timeline-node {
+  border-color: #06b6d4; /* cyan-500 */
+  color: #67e8f9; /* cyan-300 */
+  animation: node-pulse 2s infinite ease-in-out;
+}
+
+/* Advanced Card Style */
+.pro-timeline-card {
+  position: relative;
+  padding: 2rem 2.5rem;
+  background: rgba(15, 23, 42, 0.5); /* slate-900 with alpha */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover effects for the whole item */
+.pro-timeline-item:hover .pro-timeline-card {
+  transform: scale(1.03);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  animation: card-glow 1.5s alternate infinite ease-in-out;
+}
+.pro-timeline-item:hover .pro-timeline-node {
+  transform: translateY(-50%) scale(1.15);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .pro-timeline-container::before {
+    left: 25px;
+  }
+  .pro-timeline-item,
+  .pro-timeline-item:nth-child(even) {
+    left: 0;
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 15px;
+  }
+  .pro-timeline-node,
+  .pro-timeline-item:nth-child(odd) .pro-timeline-node,
+  .pro-timeline-item:nth-child(even) .pro-timeline-node {
+    left: 0;
+  }
+}
+
+/* ==========================================================================
+   Pro Internship Card Animation
+   ========================================================================== */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.internship-card-container {
+  position: relative;
+  padding: 3px; /* This padding creates the border thickness */
+  border-radius: 0.75rem; /* rounded-lg */
+  
+  /* Gradient is the background of this container */
+  background: conic-gradient(
+    from var(--angle),
+    #1e293b, /* slate-800 */
+    #67e8f9, /* cyan-300 */
+    #06b6d4, /* cyan-500 */
+    #67e8f9, /* cyan-300 */
+    #1e293b
+  );
+  
+  animation: rotate-border 6s linear infinite;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.internship-card-content {
+  /* This inner div has the actual card background */
+  background: #0f172a; /* slate-900 */
+  border-radius: calc(0.75rem - 3px); /* Match parent but account for padding */
+  transition: background 0.3s ease;
+}
+
+.internship-card-container:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+}
+
+.internship-card-container:hover .internship-card-content {
+  background: #1e293b; /* slate-800 on hover */
+}
+
+/* ==========================================================================
+   Pro Interest Card Animation
+   ========================================================================== */
+.interest-card-container {
+  position: relative;
+  padding: 3px; /* This padding creates the border thickness */
+  border-radius: 0.75rem; /* rounded-lg */
+  
+  /* Gradient is the background of this container */
+  background: conic-gradient(
+    from var(--angle),
+    #1e293b, /* slate-800 */
+    #f0abfc, /* fuchsia-300 */
+    #d946ef, /* fuchsia-500 */
+    #f0abfc, /* fuchsia-300 */
+    #1e293b
+  );
+  
+  animation: rotate-border 6s linear infinite;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interest-card-content {
+  /* This inner div has the actual card background */
+  background: #0f172a; /* slate-900 */
+  border-radius: calc(0.75rem - 3px); /* Match parent but account for padding */
+  transition: background 0.3s ease;
+}
+
+.interest-card-container:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 30px rgba(217, 70, 239, 0.4); /* fuchsia-500 with alpha */
+}
+
+.interest-card-container:hover .interest-card-content {
+  background: #1e293b; /* slate-800 on hover */
+}
